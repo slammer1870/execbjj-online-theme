@@ -1,0 +1,50 @@
+{{!< ../default}}
+
+<header class="site-header">
+    {{> site-header}}
+</header>
+<main id="site-main" class="site-main site-signup outer">
+    <div class="inner">
+        <div class="checkout-form">
+            <h1 class="checkout-title">Choose your subscription</h1>
+            <p>Unlock full access to {{@site.title}} and see the entire library of members-only content & updates</p>
+            <div class="checkout-box">
+                <div class="checkout-plan">
+                    <header class="checkout-plan-header">
+                        <h3>Monthly</h3>
+                        <span>{{@price.currency_symbol}}</span><strong>{{@price.monthly}}</strong> / month
+                    </header>
+                    <div class="checkout-plan-content">
+                        <ul>
+                            <li>Full access to all posts</li>
+                            <li>Weekly updates with new content</li>
+                            <li>Support a full time athlete</li>
+                            <li>Simple, secure card payment</li>
+                        </ul>
+                        <a class="button primary fit" href="javascript:" data-members-plan="Monthly">
+                            Sign Up
+                        </a>
+                    </div>
+                </div>
+                <div class="checkout-plan">
+                    <header class="checkout-plan-header">
+                        <h3>Yearly</h3>
+                        <span>{{@price.currency_symbol}}</span><strong>{{@price.yearly}}</strong> / year
+                    </header>
+                    <div class="checkout-plan-content">
+                        <ul>
+                            <li>Full access to all posts</li>
+                            <li>Weekly updates with new content</li>
+                            <li>Support a full time athlete</li>
+                            <li>Simple, secure card payment</li>
+                            <li>Save money on a yearly subscription!</li>
+                        </ul>
+                        <a class="button primary fit" href="javascript:" data-members-plan="Yearly">
+                            Sign Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

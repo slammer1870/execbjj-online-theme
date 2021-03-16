@@ -1,0 +1,38 @@
+routes:
+  /signup/: members/signup
+  /signin/: members/signin
+  /account/: members/account
+  /pricing/: members/pricing
+  /: index
+  /online-coaching/: coaching
+
+collections:
+  /guard/:
+    permalink: /guard/{slug}/
+    template: tag
+    filter: primary_tag:guard
+    data: tag.guard
+  /passing/:
+      permalink: /passing/{slug}/
+      template: tag
+      filter: primary_tag:passing
+      data: tag.passing
+  /submissions/:
+      permalink: /submissions/{slug}/
+      template: tag
+      filter: primary_tag:submissions
+      data: tag.submissions
+  /defence/:
+      permalink: /defence/{slug}/
+      template: tag
+      filter: primary_tag:defence
+      data: tag.defence
+  /blog/:
+    permalink: /blog/{slug}/
+    template: tag
+    filter: primary_tag:blog
+    data: tag.blog
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

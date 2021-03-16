@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="{{@site.lang}}">
+
+<head>
+
+    {{!-- Document Settings --}}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {{!-- Base Meta --}}
+    <title>{{meta_title}}</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    {{!-- This tag outputs SEO meta+structured data and other important settings --}}
+    {{ghost_head}}
+
+</head>
+
+<body class="{{body_class}}">
+
+    <div class="site-wrapper">
+
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        {{{body}}}
+
+        {{!-- The footer at the very bottom of the screen --}}
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright">
+                    <a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}
+                </section>
+                <a class="social-media-icon" href="https://www.instagram.com/execbjj/" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="56px"
+                        version="1.1" viewBox="0 0 7630 7630" width="56px" xml:space="preserve">
+                        <g id="Layer_x0020_1">
+                            <g id="_799082544">
+                                <path class="fil1"
+                                    d="M5270 4596c0,377 -306,683 -683,683l-1544 0c-377,0 -684,-306 -684,-683l0 -1544c0,-378 307,-684 684,-684l1544 0c377,0 683,306 683,684l0 1544zm-701 -2565l-1508 0c-569,0 -1030,461 -1030,1030l0 1508c0,569 461,1030 1030,1030l1508 0c569,0 1030,-461 1030,-1030l0 -1508c0,-569 -461,-1030 -1030,-1030z" />
+                                <path class="fil1"
+                                    d="M3815 4424c-332,0 -600,-269 -600,-600 0,-332 268,-600 600,-600 331,0 600,268 600,600 0,331 -269,600 -600,600zm0 -1526c-512,0 -926,414 -926,926 0,511 414,926 926,926 511,0 926,-415 926,-926 0,-512 -415,-926 -926,-926z" />
+                                <path class="fil1"
+                                    d="M4772 2647c-119,0 -216,97 -216,216 0,119 97,215 216,215 119,0 215,-96 215,-215 0,-119 -96,-216 -215,-216z" />
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+                <a class="social-media-icon" href="https://www.youtube.com/channel/UCXh4-Coyy8XTVVoLkDz-VRg/"
+                    target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" height="56px"
+                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                        version="1.1" viewBox="0 0 9291 9291" width="56px" xml:space="preserve">
+                        <g id="Layer_x0020_1">
+                            <path class="fil1"
+                                d="M6850 5434l0 -1577c0,0 0,-760 -760,-760l-2890 0c0,0 -759,0 -759,760l0 1577c0,0 0,760 759,760l2890 0c0,0 760,0 760,-760zm-1349 -787l-1443 849 0 -1696 1443 847z" />
+                        </g>
+                    </svg></a>
+                {{#if @site.logo}}
+                <a class="site-nav-logo-footer" href="{{@site.url}}"><img src="{{@site.logo}}"
+                        alt="{{@site.title}}" /></a>
+                {{else}}
+                <a class="site-nav-logo-footer" href="{{@site.url}}">{{@site.title}}</a>
+                {{/if}}
+            </div>
+        </footer>
+
+    </div>
+
+    {{> "notifications"}}
+
+
+
+    <script>
+        var images = document.querySelectorAll('.kg-gallery-image img');
+        images.forEach(function (image) {
+            var container = image.closest('.kg-gallery-image');
+            var width = image.attributes.width.value;
+            var height = image.attributes.height.value;
+            var ratio = width / height;
+            container.style.flex = ratio + ' 1 0%';
+        });
+    </script>
+
+
+    {{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
+    <script type="text/javascript" src="{{asset "built/jquery.fitvids.js"}}"></script>
+
+    <script src="{{asset "built/infinitescroll.js"}}"></script>
+
+    {{!-- Scripts for Members subscription --}}
+    <script>
+        // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+        var stripe = getParameterByName('stripe');
+
+        $(document).ready(function () {
+            if (action == 'subscribe') {
+                $('body').addClass("subscribe-success");
+            }
+            if (action == 'signup') {
+                window.location = '{{@site.url}}/signup/?action=checkout';
+            }
+            if (action == 'checkout') {
+                $('body').addClass("signup-success");
+            }
+            if (action == 'signin') {
+                $('body').addClass("signin-success");
+            }
+            if (stripe == 'success') {
+                $('body').addClass("checkout-success");
+            }
+            if (stripe == 'billing-update-success') {
+                $('body').addClass("billing-success");
+            }
+            if (stripe == 'billing-update-cancel') {
+                $('body').addClass("billing-cancel");
+            }
+
+            $('.notification-close').click(function () {
+                $(this).parent().addClass('closed');
+                var uri = window.location.toString();
+                if (uri.indexOf("?") > 0) {
+                    var clean_uri = uri.substring(0, uri.indexOf("?"));
+                    window.history.replaceState({}, document.title, clean_uri);
+                }
+            });
+
+            // Reset form on opening subscrion overlay
+            $('.subscribe-button').click(function () {
+                $('.subscribe-overlay form').removeClass();
+                $('.subscribe-email').val('');
+            });
+
+            // Account navigation menu
+            $('.account-menu-avatar').click(function (event) {
+                $(this).toggleClass('active');
+                event.stopPropagation();
+            });
+
+            $('.account-menu-dropdown').click(function (event) {
+                event.stopPropagation();
+            });
+
+            $('body').click(function () {
+                $('.account-menu-avatar').removeClass('active');
+            });
+
+            // Burger navigation menu
+            $('.menu-btn').click(function (event) {
+                $(this).toggleClass('open');
+                event.stopPropagation();
+            });
+
+            $('.nav-menu-dropdown').click(function (event) {
+                event.stopPropagation();
+            });
+
+            $('body').click(function () {
+                $('.menu-btn').removeClass('open');
+            });
+        });
+    </script>
+
+    {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
+    {{{block "scripts"}}}
+
+    {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
+    {{ghost_foot}}
+
+</body>
+
+</html>
