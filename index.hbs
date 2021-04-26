@@ -35,24 +35,26 @@ into the {body} of the default.hbs template --}}
                         and
                         techniques of Brazilian Jiu Jitsu.</p>
                     <p>All of our content is produced by high level competitive athletes.</p>
-                    <p>We focus on providing you with the most benficial studies of aspects that you can improve your game with, today!</p>
+                    <p>We focus on providing you with the most benficial studies of aspects that you can improve your
+                        game with, today!</p>
                 </div>
                 {{#unless @member.paid}}
                 <form class="signup-form-index" data-members-form="signup">
-            <h2 class="cta">Enter your email now to create your account.</h2>
-            <br/>
-            <div class="signup-box">
-                <input data-members-email type="email" placeholder="Type your email..." required="true"
-                    autocomplete="false" />
-                <button class="button primary" type="submit">
-                    <span class="button-content">Continue</span>
-                    <span class="button-loader">{{> "icons/loader"}}</span>
-                </button>
-            </div>
-            <div class="message-success"><strong>Great!</strong> Check your inbox and click the link to confirm your
-                subscription</div>
-            <div class="message-error">Please enter a valid email address!</div>
-        </form>
+                    <h2 class="cta">Enter your email now to create your account.</h2>
+                    <br />
+                    <div class="signup-box">
+                        <input data-members-email type="email" placeholder="Type your email..." required="true"
+                            autocomplete="false" />
+                        <button class="button primary" type="submit">
+                            <span class="button-content">Continue</span>
+                            <span class="button-loader">{{> "icons/loader"}}</span>
+                        </button>
+                    </div>
+                    <div class="message-success"><strong>Great!</strong> Check your inbox and click the link to confirm
+                        your
+                        subscription</div>
+                    <div class="message-error">Please enter a valid email address!</div>
+                </form>
                 {{/unless}}
             </div>
         </div>
@@ -60,25 +62,54 @@ into the {body} of the default.hbs template --}}
     <div class="inner">
         <h1 class="post-full-title">What have others had to say?</h1>
         <div class="testimonials">
-        <div class="client">
-            <img src="assets/pavol.jpg">
-            <p>"I have done about 6 months of classes with ExecBJJ and I have been following their online content since then. </p> <p> Sam is an excellent coach with a great system developed for his courses and can help you improve your skills whether you are a beginner or seasoned practitioner. I have brought 2 of my coworkers for the classes and they both enjoyed it and still train to this day. </p> <p> With the latest online content, ExecBJJ offers high quality content focused on various parts of the game, and really makes you excited to get on the mats."</p>
-            <h4>Pavol Celuch, BJJ Blue Belt</h4>
-        </div>
-        <div class="client">
-            <img src="assets/peter.jpg">
-            <p>"ExecBJJ is an excellent learning resource for jiu-jitsu athletes of all levels! Sam not only explains techniques very well with a powerful combination of a written word plus videos, but his pick of techniques is also very precise. </p> <p>Information flow in BJJ these days can be quite overwhelming, so you need a trusted source, and with ExecBJJ you can be sure that all of the shown material has been tried and tested at the very top level of competition. </p> <p> Even as a black belt, I find a lot of important details for myself with each new article!"</p>
-            <h4>Peter Mamaev, BJJ Black Belt</h4>
+            <div class="client">
+                <img src="assets/pavol.jpg">
+                <p>"I have done about 6 months of classes with ExecBJJ and I have been following their online content
+                    since then. </p>
+                <p> Sam is an excellent coach with a great system developed for his courses and can help you improve
+                    your skills whether you are a beginner or seasoned practitioner. I have brought 2 of my coworkers
+                    for the classes and they both enjoyed it and still train to this day. </p>
+                <p> With the latest online content, ExecBJJ offers high quality content focused on various parts of the
+                    game, and really makes you excited to get on the mats."</p>
+                <h4>Pavol Celuch, BJJ Blue Belt</h4>
+            </div>
+            <div class="client">
+                <img src="assets/peter.jpg">
+                <p>"ExecBJJ is an excellent learning resource for jiu-jitsu athletes of all levels! Sam not only
+                    explains techniques very well with a powerful combination of a written word plus videos, but his
+                    pick of techniques is also very precise. </p>
+                <p>Information flow in BJJ these days can be quite overwhelming, so you need a trusted source, and with
+                    ExecBJJ you can be sure that all of the shown material has been tried and tested at the very top
+                    level of competition. </p>
+                <p> Even as a black belt, I find a lot of important details for myself with each new article!"</p>
+                <h4>Peter Mamaev, BJJ Black Belt</h4>
 
-        </div>
-        <div class="client">
-            <img src="assets/austin.jpg">
-            <p>"The attention to detail that the team at ExecBJJ put into their service is exceptional. </p> <p> The instructionals are not just your usual spread of technique explanations, but more of a deep dive into the concepts and problem areas of the situation at hand, thus leading to instantaneously transferable knowledge to the mats. </p> <p> 
+            </div>
+            <div class="client">
+                <img src="assets/austin.jpg">
+                <p>"The attention to detail that the team at ExecBJJ put into their service is exceptional. </p>
+                <p> The instructionals are not just your usual spread of technique explanations, but more of a deep dive
+                    into the concepts and problem areas of the situation at hand, thus leading to instantaneously
+                    transferable knowledge to the mats. </p>
+                <p>
 
-                I would highly recommend ExecBJJ to anyone who wants to dramatically improve and understand their BJJ game at a much deeper level. 
-            "</p>
-            <h4>Austin Rhatigan, BJJ Purple Belt</h4>
+                    I would highly recommend ExecBJJ to anyone who wants to dramatically improve and understand their
+                    BJJ game at a much deeper level.
+                    "</p>
+                <h4>Austin Rhatigan, BJJ Purple Belt</h4>
+            </div>
         </div>
+    </div>
+    <div class="inner posts">
+        <br>
+        <h1 class="post-full-title">Featured Posts</h1>
+        <hr>
+        <div class="post-feed">
+            {{#foreach posts}}
+            {{^if featured}}
+            {{> "post-card"}}
+            {{/if}}
+            {{/foreach}}
         </div>
     </div>
     <div class="inner posts">
